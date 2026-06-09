@@ -72,7 +72,7 @@ class AppFooter extends StatelessWidget {
       children: [
         _socialIcon(FontAwesomeIcons.instagram),
         const SizedBox(width: 16),
-        _socialIcon(FontAwesomeIcons.twitter),
+        _socialIcon(FontAwesomeIcons.xTwitter),
         const SizedBox(width: 16),
         _socialIcon(FontAwesomeIcons.envelope),
       ],

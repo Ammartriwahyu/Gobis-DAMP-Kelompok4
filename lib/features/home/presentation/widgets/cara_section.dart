@@ -67,7 +67,7 @@ class CaraSection extends StatelessWidget {
                   crossAxisCount: 2,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  childAspectRatio: isMobile ? 0.9 : 1.0,
+                  childAspectRatio: isMobile ? 0.75 : 1.0,
                   mainAxisSpacing: 16,
                   crossAxisSpacing: 8,
                   children: _steps.map((s) => _StepItem(step: s)).toList(),

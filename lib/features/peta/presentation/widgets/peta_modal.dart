@@ -66,12 +66,15 @@ class _PetaModalState extends State<PetaModal> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Cari ${widget.target} - ${widget.jenis}',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primaryDark,
+                  Flexible(
+                    child: Text(
+                      'Cari ${widget.target} - ${widget.jenis}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryDark,
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   GestureDetector(

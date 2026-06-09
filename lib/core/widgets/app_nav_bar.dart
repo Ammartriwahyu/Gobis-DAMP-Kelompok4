@@ -12,7 +12,7 @@ class AppNavBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = MediaQuery.of(context).size.width >= 768;
+    final isDesktop = MediaQuery.of(context).size.width >= 640;
 
     return AppBar(
       backgroundColor: AppColors.white,

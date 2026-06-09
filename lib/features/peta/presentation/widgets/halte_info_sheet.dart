@@ -106,8 +106,8 @@ class HalteInfoSheet extends StatelessWidget {
             value: lokasi.rute,
           ),
           const SizedBox(height: 8),
-          _infoRow(
-            icon: FontAwesomeIcons.clock,
+          _infoRowMaterial(
+            icon: Icons.access_time,
             label: 'Operasional',
             value: lokasi.keterangan,
           ),
@@ -144,6 +144,34 @@ class HalteInfoSheet extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         FaIcon(icon, size: 13, color: AppColors.primaryDark),
+        const SizedBox(width: 10),
+        Text(
+          '$label: ',
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+            color: AppColors.gray600,
+            fontSize: 13,
+          ),
+        ),
+        Expanded(
+          child: Text(
+            value,
+            style: const TextStyle(color: AppColors.secondary, fontSize: 13),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _infoRowMaterial({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, size: 14, color: AppColors.primaryDark),
         const SizedBox(width: 10),
         Text(
           '$label: ',
