@@ -32,7 +32,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Flutter Web
-        run: flutter build web --release --base-href /gobis-damp-kelompok4/
+        run: flutter build web --release --base-href /Gobis-DAMP-Kelompok4/
 
       - name: Upload artifact ke GitHub Pages
         uses: actions/upload-pages-artifact@v3
