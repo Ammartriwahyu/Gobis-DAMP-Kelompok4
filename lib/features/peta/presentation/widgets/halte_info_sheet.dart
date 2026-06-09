@@ -136,7 +136,7 @@ class HalteInfoSheet extends StatelessWidget {
   }
 
   Widget _infoRow({
-    required IconData icon,
+    required FaIconData icon,
     required String label,
     required String value,
   }) {

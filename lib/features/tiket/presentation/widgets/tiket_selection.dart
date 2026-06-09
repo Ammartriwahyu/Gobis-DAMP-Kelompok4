@@ -82,7 +82,7 @@ class TiketSelection extends StatelessWidget {
 class _TiketCard extends StatefulWidget {
   final String jenis;
   final String subtitle;
-  final IconData icon;
+  final FaIconData icon;
   final Color iconBg;
   final Color iconColor;
   final Color borderHoverColor;

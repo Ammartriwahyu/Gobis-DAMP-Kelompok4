@@ -69,7 +69,7 @@ class AppFooter extends StatelessWidget {
     );
   }
 
-  Widget _socialIcon(IconData icon) {
+  Widget _socialIcon(FaIconData icon) {
     return GestureDetector(
       onTap: () {},
       child: FaIcon(icon, color: AppColors.gray400, size: 20),

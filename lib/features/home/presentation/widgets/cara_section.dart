@@ -75,7 +75,7 @@ class CaraSection extends StatelessWidget {
 }
 
 class _StepItem extends StatelessWidget {
-  final ({IconData icon, String title, String desc}) step;
+  final ({FaIconData icon, String title, String desc}) step;
 
   const _StepItem({required this.step});
 

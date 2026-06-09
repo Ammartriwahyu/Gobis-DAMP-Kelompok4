@@ -87,7 +87,7 @@ class _LayananCard extends StatefulWidget {
   final String jenis;
   final String target;
   final String description;
-  final IconData icon;
+  final FaIconData icon;
   final Color iconBg;
   final Color iconColor;
 

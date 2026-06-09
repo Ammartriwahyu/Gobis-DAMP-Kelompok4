@@ -494,7 +494,7 @@ class _LoginPageState extends State<LoginPage>
 
 class _SocialButton extends StatelessWidget {
   final String label;
-  final IconData icon;
+  final FaIconData icon;
   final VoidCallback onTap;
 
   const _SocialButton({
