@@ -6,11 +6,16 @@ class TentangSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = MediaQuery.of(context).size.width >= 768;
+    final width = MediaQuery.of(context).size.width;
+    final isDesktop = width >= 768;
+    final isMobile = width < 480;
 
     return Container(
       color: AppColors.light,
-      padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 24),
+      padding: EdgeInsets.symmetric(
+        vertical: isMobile ? 48 : 64,
+        horizontal: isMobile ? 16 : 24,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1280),
@@ -19,7 +24,7 @@ class TentangSection extends StatelessWidget {
               color: AppColors.gray100,
               borderRadius: BorderRadius.circular(24),
             ),
-            padding: const EdgeInsets.all(32),
+            padding: EdgeInsets.all(isMobile ? 20 : 32),
             child: isDesktop
                 ? Row(
                     crossAxisAlignment: CrossAxisAlignment.center,

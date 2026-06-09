@@ -30,20 +30,26 @@ class CaraSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = MediaQuery.of(context).size.width >= 768;
+    final width = MediaQuery.of(context).size.width;
+    final isDesktop = width >= 768;
+    final isMobile = width < 480;
 
     return Container(
       color: AppColors.white,
-      padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 24),
+      padding: EdgeInsets.symmetric(
+        vertical: isMobile ? 48 : 64,
+        horizontal: isMobile ? 16 : 24,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1280),
           child: Column(
             children: [
-              const Text(
+              Text(
                 'Cara Menggunakan Go Bis',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: isMobile ? 22 : 28,
                   fontWeight: FontWeight.bold,
                   color: AppColors.secondary,
                 ),
@@ -61,9 +67,9 @@ class CaraSection extends StatelessWidget {
                   crossAxisCount: 2,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  childAspectRatio: 0.85,
+                  childAspectRatio: isMobile ? 0.9 : 1.0,
                   mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
+                  crossAxisSpacing: 8,
                   children: _steps.map((s) => _StepItem(step: s)).toList(),
                 ),
             ],

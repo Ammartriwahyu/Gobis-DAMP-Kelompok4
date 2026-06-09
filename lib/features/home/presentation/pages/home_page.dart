@@ -39,17 +39,28 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: const AppNavBar(currentRoute: '/'),
       endDrawer: const AppDrawer(currentRoute: '/'),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            HeroSection(onLihatLayanan: _scrollToLayanan),
-            LayananSection(key: _layananKey),
-            const CaraSection(),
-            const TentangSection(),
-            const AppFooter(),
-          ],
-        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            controller: _scrollController,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: IntrinsicHeight(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    HeroSection(onLihatLayanan: _scrollToLayanan),
+                    LayananSection(key: _layananKey),
+                    const CaraSection(),
+                    const TentangSection(),
+                    const Spacer(),
+                    const AppFooter(),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

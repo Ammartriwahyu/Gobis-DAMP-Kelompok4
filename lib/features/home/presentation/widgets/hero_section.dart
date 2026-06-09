@@ -9,16 +9,16 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = MediaQuery.of(context).size.width >= 768;
+    final width = MediaQuery.of(context).size.width;
+    final isDesktop = width >= 768;
+    final isMobile = width < 480;
 
     return SizedBox(
-      height: isDesktop ? 440 : 400,
+      height: isDesktop ? 440 : (isMobile ? 420 : 400),
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // Dark background
           Container(color: AppColors.secondary),
-          // Background image at 40% opacity — same URL as HTML
           Opacity(
             opacity: 0.4,
             child: Image.network(
@@ -27,22 +27,24 @@ class HeroSection extends StatelessWidget {
               errorBuilder: (_, __, ___) => const SizedBox.shrink(),
             ),
           ),
-          // Content
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: isDesktop ? 48 : 24,
               vertical: 48,
             ),
             child: isDesktop
-                ? _heroContent(context)
-                : Center(child: _heroContent(context, centered: true)),
+                ? _heroContent(context, isMobile: false)
+                : Center(child: _heroContent(context, centered: true, isMobile: isMobile)),
           ),
         ],
       ),
     );
   }
 
-  Widget _heroContent(BuildContext context, {bool centered = false}) {
+  Widget _heroContent(BuildContext context, {bool centered = false, bool isMobile = false}) {
+    final titleSize = isMobile ? 26.0 : 38.0;
+    final bodySize = isMobile ? 14.0 : 16.0;
+
     return Column(
       crossAxisAlignment:
           centered ? CrossAxisAlignment.center : CrossAxisAlignment.start,
@@ -50,15 +52,15 @@ class HeroSection extends StatelessWidget {
       children: [
         RichText(
           textAlign: centered ? TextAlign.center : TextAlign.left,
-          text: const TextSpan(
+          text: TextSpan(
             style: TextStyle(
               fontFamily: 'Inter',
-              fontSize: 38,
+              fontSize: titleSize,
               fontWeight: FontWeight.bold,
               color: AppColors.white,
               height: 1.25,
             ),
-            children: [
+            children: const [
               TextSpan(text: 'Solusi Mobilitas\n'),
               TextSpan(
                 text: 'Kota Surabaya',
@@ -73,9 +75,9 @@ class HeroSection extends StatelessWidget {
           child: Text(
             'Temukan rute tercepat, pantau jadwal bus secara real-time, dan pesan tiket perjalanan Anda dengan mudah dalam satu platform.',
             textAlign: centered ? TextAlign.center : TextAlign.left,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppColors.gray300,
-              fontSize: 16,
+              fontSize: bodySize,
               height: 1.65,
             ),
           ),
@@ -83,7 +85,7 @@ class HeroSection extends StatelessWidget {
         const SizedBox(height: 32),
         Wrap(
           alignment: centered ? WrapAlignment.center : WrapAlignment.start,
-          spacing: 16,
+          spacing: 12,
           runSpacing: 12,
           children: [
             ElevatedButton(
@@ -94,11 +96,17 @@ class HeroSection extends StatelessWidget {
                 shape: const StadiumBorder(),
                 elevation: 4,
                 shadowColor: Colors.black38,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                padding: EdgeInsets.symmetric(
+                  horizontal: isMobile ? 24 : 32,
+                  vertical: 14,
+                ),
               ),
-              child: const Text(
+              child: Text(
                 'Pesan Tiket Sekarang',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: isMobile ? 14 : 15,
+                ),
               ),
             ),
             ElevatedButton(
@@ -109,11 +117,17 @@ class HeroSection extends StatelessWidget {
                 shape: const StadiumBorder(),
                 elevation: 4,
                 shadowColor: Colors.black38,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                padding: EdgeInsets.symmetric(
+                  horizontal: isMobile ? 24 : 32,
+                  vertical: 14,
+                ),
               ),
-              child: const Text(
+              child: Text(
                 'Lihat Layanan',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: isMobile ? 14 : 15,
+                ),
               ),
             ),
           ],

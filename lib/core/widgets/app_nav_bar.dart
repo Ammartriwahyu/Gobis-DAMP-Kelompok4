@@ -25,24 +25,30 @@ class AppNavBar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           children: [
             const _Logo(),
-            const Spacer(),
             if (isDesktop) ...[
-              _NavLink(label: 'Beranda', route: '/', currentRoute: currentRoute),
-              const SizedBox(width: 32),
-              _NavLink(
-                label: 'Jadwal Transportasi',
-                route: '/jadwal',
-                currentRoute: currentRoute,
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _NavLink(label: 'Beranda', route: '/', currentRoute: currentRoute),
+                    const SizedBox(width: 32),
+                    _NavLink(
+                      label: 'Jadwal Transportasi',
+                      route: '/jadwal',
+                      currentRoute: currentRoute,
+                    ),
+                    const SizedBox(width: 32),
+                    _NavLink(
+                      label: 'Pesan Tiket',
+                      route: '/tiket',
+                      currentRoute: currentRoute,
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(width: 32),
-              _NavLink(
-                label: 'Pesan Tiket',
-                route: '/tiket',
-                currentRoute: currentRoute,
-              ),
-              const SizedBox(width: 32),
               const _LoginButton(),
             ] else ...[
+              const Spacer(),
               Builder(
                 builder: (ctx) => IconButton(
                   onPressed: () => Scaffold.of(ctx).openEndDrawer(),
