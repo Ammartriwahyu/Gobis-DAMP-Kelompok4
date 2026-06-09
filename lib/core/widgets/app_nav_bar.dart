@@ -28,19 +28,19 @@ class AppNavBar extends StatelessWidget implements PreferredSizeWidget {
             const Spacer(),
             if (isDesktop) ...[
               _NavLink(label: 'Beranda', route: '/', currentRoute: currentRoute),
-              const SizedBox(width: 24),
+              const SizedBox(width: 32),
               _NavLink(
                 label: 'Jadwal Transportasi',
                 route: '/jadwal',
                 currentRoute: currentRoute,
               ),
-              const SizedBox(width: 24),
+              const SizedBox(width: 32),
               _NavLink(
                 label: 'Pesan Tiket',
                 route: '/tiket',
                 currentRoute: currentRoute,
               ),
-              const SizedBox(width: 24),
+              const SizedBox(width: 32),
               const _LoginButton(),
             ] else ...[
               Builder(

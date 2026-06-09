@@ -63,9 +63,9 @@ class _PetaPageState extends State<PetaPage> {
         children: [
           // Header
           Container(
-            color: AppColors.white,
             padding: const EdgeInsets.all(16),
             decoration: const BoxDecoration(
+              color: AppColors.white,
               border: Border(bottom: BorderSide(color: AppColors.gray100)),
               boxShadow: [
                 BoxShadow(

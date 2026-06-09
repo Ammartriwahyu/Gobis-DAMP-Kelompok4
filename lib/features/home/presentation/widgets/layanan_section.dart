@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../peta/presentation/widgets/peta_modal.dart';
 
 class LayananSection extends StatelessWidget {
   const LayananSection({super.key});
@@ -113,10 +114,10 @@ class _LayananCardState extends State<_LayananCard> {
       onEnter: (_) => setState(() => _hovering = true),
       onExit: (_) => setState(() => _hovering = false),
       child: GestureDetector(
-        onTap: () => Navigator.pushNamed(
+        onTap: () => PetaModal.show(
           context,
-          '/peta',
-          arguments: {'jenis': widget.jenis, 'target': widget.target},
+          jenis: widget.jenis,
+          target: widget.target,
         ),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
