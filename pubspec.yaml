@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  font_awesome_flutter: ^11.0.0
+  font_awesome_flutter: ^10.9.1
   google_fonts: ^6.2.1
   flutter_map: ^6.1.0
   latlong2: ^0.9.1
