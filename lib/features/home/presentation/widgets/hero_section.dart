@@ -3,26 +3,28 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/widgets/primary_button.dart';
 
 class HeroSection extends StatelessWidget {
-  const HeroSection({super.key});
+  final VoidCallback? onLihatLayanan;
+
+  const HeroSection({super.key, this.onLihatLayanan});
 
   @override
   Widget build(BuildContext context) {
     final isDesktop = MediaQuery.of(context).size.width >= 768;
 
     return SizedBox(
-      height: isDesktop ? 420 : 380,
+      height: isDesktop ? 440 : 400,
       child: Stack(
         fit: StackFit.expand,
         children: [
           // Dark background
           Container(color: AppColors.secondary),
-          // Background image overlay
+          // Background image at 40% opacity — same URL as HTML
           Opacity(
             opacity: 0.4,
             child: Image.network(
               'https://i.pinimg.com/1200x/f0/07/d9/f007d9770da93348eb38451d7cb9d06d.jpg',
               fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => Container(color: AppColors.secondary),
+              errorBuilder: (_, __, ___) => const SizedBox.shrink(),
             ),
           ),
           // Content
@@ -51,7 +53,7 @@ class HeroSection extends StatelessWidget {
           text: const TextSpan(
             style: TextStyle(
               fontFamily: 'Inter',
-              fontSize: 36,
+              fontSize: 38,
               fontWeight: FontWeight.bold,
               color: AppColors.white,
               height: 1.25,
@@ -66,34 +68,48 @@ class HeroSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        Text(
-          'Temukan rute tercepat, pantau jadwal bus secara real-time, dan pesan tiket perjalanan Anda dengan mudah dalam satu platform.',
-          textAlign: centered ? TextAlign.center : TextAlign.left,
-          style: const TextStyle(
-            color: AppColors.gray300,
-            fontSize: 15,
-            height: 1.6,
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 672),
+          child: Text(
+            'Temukan rute tercepat, pantau jadwal bus secara real-time, dan pesan tiket perjalanan Anda dengan mudah dalam satu platform.',
+            textAlign: centered ? TextAlign.center : TextAlign.left,
+            style: const TextStyle(
+              color: AppColors.gray300,
+              fontSize: 16,
+              height: 1.65,
+            ),
           ),
         ),
-        const SizedBox(height: 28),
+        const SizedBox(height: 32),
         Wrap(
           alignment: centered ? WrapAlignment.center : WrapAlignment.start,
-          spacing: 12,
+          spacing: 16,
           runSpacing: 12,
           children: [
-            PrimaryButton(
-              label: 'Pesan Tiket Sekarang',
+            ElevatedButton(
               onPressed: () => Navigator.pushReplacementNamed(context, '/tiket'),
-            ),
-            OutlinedButton(
-              onPressed: () {},
-              style: OutlinedButton.styleFrom(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primary,
                 foregroundColor: AppColors.secondary,
-                backgroundColor: AppColors.white,
-                side: BorderSide.none,
                 shape: const StadiumBorder(),
+                elevation: 4,
+                shadowColor: Colors.black38,
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-                elevation: 3,
+              ),
+              child: const Text(
+                'Pesan Tiket Sekarang',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: onLihatLayanan,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.white,
+                foregroundColor: AppColors.secondary,
+                shape: const StadiumBorder(),
+                elevation: 4,
+                shadowColor: Colors.black38,
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
               ),
               child: const Text(
                 'Lihat Layanan',

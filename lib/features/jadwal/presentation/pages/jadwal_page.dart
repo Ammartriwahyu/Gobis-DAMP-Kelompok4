@@ -65,6 +65,7 @@ class _JadwalPageState extends State<JadwalPage> {
                           ),
                         ),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             _TabButton(
                               label: 'Jadwal Operasional',

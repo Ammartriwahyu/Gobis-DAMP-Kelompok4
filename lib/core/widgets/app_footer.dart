@@ -10,20 +10,29 @@ class AppFooter extends StatelessWidget {
     final isDesktop = MediaQuery.of(context).size.width >= 768;
 
     return Container(
-      color: AppColors.secondary,
+      decoration: const BoxDecoration(
+        color: AppColors.secondary,
+        border: Border(top: BorderSide(color: Color(0xFF374151), width: 1)),
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-      child: isDesktop
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [_brandInfo(), _socialLinks()],
-            )
-          : Column(
-              children: [
-                _brandInfo(),
-                const SizedBox(height: 16),
-                _socialLinks(),
-              ],
-            ),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1280),
+          child: isDesktop
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [_brandInfo(), _socialLinks()],
+                )
+              : Column(
+                  children: [
+                    _brandInfo(),
+                    const SizedBox(height: 16),
+                    _socialLinks(),
+                  ],
+                ),
+        ),
+      ),
     );
   }
 
@@ -59,6 +68,7 @@ class AppFooter extends StatelessWidget {
 
   Widget _socialLinks() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _socialIcon(FontAwesomeIcons.instagram),
         const SizedBox(width: 16),
@@ -70,9 +80,12 @@ class AppFooter extends StatelessWidget {
   }
 
   Widget _socialIcon(FaIconData icon) {
-    return GestureDetector(
-      onTap: () {},
-      child: FaIcon(icon, color: AppColors.gray400, size: 20),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () {},
+        child: FaIcon(icon, color: AppColors.gray400, size: 20),
+      ),
     );
   }
 }

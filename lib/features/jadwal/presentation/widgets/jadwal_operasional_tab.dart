@@ -17,22 +17,30 @@ class JadwalOperasionalTab extends StatelessWidget {
       jam: '05:30 - 20:30 WIB',
       keterangan: 'Setiap Hari',
     ),
-    (
-      nama: 'Suroboyo Bus (Rute R8)',
-      rute: 'RSAL - Terminal Bratang',
-      jam: '06:00 - 20:00 WIB',
-      keterangan: 'Setiap Hari',
-    ),
-    (
-      nama: 'Bus Kota AKDP',
-      rute: 'Terminal Purabaya - Sidoarjo',
-      jam: '05:00 - 22:00 WIB',
-      keterangan: 'Setiap Hari',
-    ),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = MediaQuery.of(context).size.width >= 768;
+
+    if (isDesktop) {
+      return Row(
+        children: _jadwalList
+            .map((j) => Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: _JadwalCard(
+                      nama: j.nama,
+                      rute: j.rute,
+                      jam: j.jam,
+                      keterangan: j.keterangan,
+                    ),
+                  ),
+                ))
+            .toList(),
+      );
+    }
+
     return Column(
       children: _jadwalList
           .map((j) => _JadwalCard(
@@ -63,7 +71,7 @@ class _JadwalCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
@@ -78,6 +86,7 @@ class _JadwalCard extends StatelessWidget {
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             child: Column(
@@ -87,7 +96,7 @@ class _JadwalCard extends StatelessWidget {
                   nama,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                    fontSize: 16,
                     color: AppColors.secondary,
                   ),
                 ),
@@ -102,6 +111,7 @@ class _JadwalCard extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(width: 16),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [

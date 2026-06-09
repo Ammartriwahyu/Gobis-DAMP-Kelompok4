@@ -16,31 +16,32 @@ class AppNavBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: AppColors.white,
-      elevation: 2,
+      elevation: 3,
+      shadowColor: Colors.black26,
       automaticallyImplyLeading: false,
       titleSpacing: 0,
       title: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [
-            _Logo(),
+            const _Logo(),
             const Spacer(),
             if (isDesktop) ...[
               _NavLink(label: 'Beranda', route: '/', currentRoute: currentRoute),
-              const SizedBox(width: 4),
+              const SizedBox(width: 24),
               _NavLink(
                 label: 'Jadwal Transportasi',
                 route: '/jadwal',
                 currentRoute: currentRoute,
               ),
-              const SizedBox(width: 4),
+              const SizedBox(width: 24),
               _NavLink(
                 label: 'Pesan Tiket',
                 route: '/tiket',
                 currentRoute: currentRoute,
               ),
-              const SizedBox(width: 16),
-              _LoginButton(),
+              const SizedBox(width: 24),
+              const _LoginButton(),
             ] else ...[
               Builder(
                 builder: (ctx) => IconButton(
@@ -48,7 +49,7 @@ class AppNavBar extends StatelessWidget implements PreferredSizeWidget {
                   icon: const FaIcon(
                     FontAwesomeIcons.bars,
                     color: AppColors.gray600,
-                    size: 20,
+                    size: 22,
                   ),
                 ),
               ),
@@ -60,17 +61,52 @@ class AppNavBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-class _Logo extends StatelessWidget {
+class _Logo extends StatefulWidget {
+  const _Logo();
+
+  @override
+  State<_Logo> createState() => _LogoState();
+}
+
+class _LogoState extends State<_Logo> with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+  late final Animation<double> _bounce;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    )..repeat(reverse: true);
+    _bounce = Tween<double>(begin: 0, end: -5).animate(
+      CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.pushReplacementNamed(context, '/'),
       child: Row(
         children: [
-          const FaIcon(
-            FontAwesomeIcons.bus,
-            color: AppColors.primary,
-            size: 20,
+          AnimatedBuilder(
+            animation: _bounce,
+            builder: (_, child) => Transform.translate(
+              offset: Offset(0, _bounce.value),
+              child: child,
+            ),
+            child: const FaIcon(
+              FontAwesomeIcons.bus,
+              color: AppColors.primary,
+              size: 22,
+            ),
           ),
           const SizedBox(width: 8),
           RichText(
@@ -79,6 +115,7 @@ class _Logo extends StatelessWidget {
                 fontFamily: 'Inter',
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
                 color: AppColors.secondary,
               ),
               children: [
@@ -116,15 +153,14 @@ class _NavLink extends StatelessWidget {
         if (!_isActive) Navigator.pushReplacementNamed(context, route);
       },
       style: TextButton.styleFrom(
-        foregroundColor:
-            _isActive ? AppColors.primaryDark : AppColors.gray600,
+        foregroundColor: _isActive ? AppColors.primaryDark : AppColors.gray600,
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       ),
       child: Text(
         label,
         style: TextStyle(
           color: _isActive ? AppColors.primaryDark : AppColors.gray600,
-          fontWeight:
-              _isActive ? FontWeight.bold : FontWeight.w500,
+          fontWeight: _isActive ? FontWeight.bold : FontWeight.w500,
           fontSize: 14,
         ),
       ),
@@ -133,6 +169,8 @@ class _NavLink extends StatelessWidget {
 }
 
 class _LoginButton extends StatelessWidget {
+  const _LoginButton();
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -141,7 +179,8 @@ class _LoginButton extends StatelessWidget {
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.secondary,
         shape: const StadiumBorder(),
-        elevation: 2,
+        elevation: 3,
+        shadowColor: Colors.black26,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       ),
       child: const Text(
@@ -167,11 +206,11 @@ class AppDrawer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
               _drawerItem(context, 'Beranda', '/'),
               _drawerItem(context, 'Jadwal Transportasi', '/jadwal'),
               _drawerItem(context, 'Pesan Tiket', '/tiket'),
-              const Divider(height: 24),
+              const Divider(height: 24, color: AppColors.gray100),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -183,6 +222,7 @@ class AppDrawer extends StatelessWidget {
                     backgroundColor: AppColors.primary,
                     foregroundColor: AppColors.secondary,
                     shape: const StadiumBorder(),
+                    elevation: 3,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
                   child: const Text(

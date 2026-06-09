@@ -26,24 +26,6 @@ class _JadwalPemberhentianTabState extends State<JadwalPemberhentianTab> {
       estimasi: '10:25 WIB (15 mnt lagi)',
       status: 'padat',
     ),
-    (
-      nama: 'Halte Rajawali',
-      rute: 'SB R1',
-      estimasi: '10:40 WIB (30 mnt lagi)',
-      status: 'ontime',
-    ),
-    (
-      nama: 'Halte Wonokromo',
-      rute: 'SB R2',
-      estimasi: '10:50 WIB (40 mnt lagi)',
-      status: 'ontime',
-    ),
-    (
-      nama: 'Halte ITS',
-      rute: 'TSS',
-      estimasi: '11:00 WIB (50 mnt lagi)',
-      status: 'padat',
-    ),
   ];
 
   @override
@@ -224,11 +206,13 @@ class _HalteRow extends StatelessWidget {
                 flex: 2,
                 child: Row(
                   children: [
-                    Icon(
-                      isOnTime ? Icons.circle : Icons.warning_amber_rounded,
-                      color: isOnTime ? AppColors.green600 : AppColors.yellow600,
-                      size: 10,
-                    ),
+                    isOnTime
+                        ? const _PulseCircle()
+                        : const Icon(
+                            Icons.warning_amber_rounded,
+                            color: AppColors.yellow600,
+                            size: 12,
+                          ),
                     const SizedBox(width: 4),
                     Text(
                       isOnTime ? 'On Time' : 'Padat Merayap',
@@ -246,6 +230,49 @@ class _HalteRow extends StatelessWidget {
         ),
         const Divider(height: 1, color: AppColors.gray100),
       ],
+    );
+  }
+}
+
+class _PulseCircle extends StatefulWidget {
+  const _PulseCircle();
+
+  @override
+  State<_PulseCircle> createState() => _PulseCircleState();
+}
+
+class _PulseCircleState extends State<_PulseCircle>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+  late final Animation<double> _anim;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      duration: const Duration(milliseconds: 900),
+      vsync: this,
+    )..repeat(reverse: true);
+    _anim = Tween<double>(begin: 0.3, end: 1.0).animate(
+      CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _anim,
+      builder: (_, child) => Opacity(
+        opacity: _anim.value,
+        child: child,
+      ),
+      child: const Icon(Icons.circle, color: AppColors.green600, size: 10),
     );
   }
 }

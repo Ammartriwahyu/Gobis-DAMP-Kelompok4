@@ -74,10 +74,10 @@ class _TiketPageState extends State<TiketPage> {
           children: [
             // Hero
             Container(
-              color: AppColors.primaryLight,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 24),
               decoration: const BoxDecoration(
+                color: AppColors.primaryLight,
                 border: Border(
                   bottom: BorderSide(color: AppColors.gray100),
                 ),

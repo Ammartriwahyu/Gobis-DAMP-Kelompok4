@@ -44,7 +44,7 @@ class LayananSection extends StatelessWidget {
                     )),
                     const SizedBox(width: 24),
                     Expanded(child: _LayananCard(
-                      jenis: 'Bus Kota',
+                      jenis: 'Bus Kota / Antar Kota',
                       target: 'Terminal',
                       description: 'Layanan bus untuk jangkauan yang lebih luas. Cari dan temukan terminal pemberangkatan terdekat.',
                       icon: FontAwesomeIcons.busSimple,
@@ -66,7 +66,7 @@ class LayananSection extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     _LayananCard(
-                      jenis: 'Bus Kota',
+                      jenis: 'Bus Kota / Antar Kota',
                       target: 'Terminal',
                       description: 'Layanan bus untuk jangkauan yang lebih luas. Cari dan temukan terminal pemberangkatan terdekat.',
                       icon: FontAwesomeIcons.busSimple,
