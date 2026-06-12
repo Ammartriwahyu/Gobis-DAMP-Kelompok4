@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/constants/app_colors.dart';
 
 class TiketForm extends StatefulWidget {
@@ -99,8 +98,8 @@ class _TiketFormState extends State<TiketForm> {
                 ),
                 TextButton.icon(
                   onPressed: widget.onBack,
-                  icon: const FaIcon(
-                    FontAwesomeIcons.arrowLeft,
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
                     size: 13,
                     color: AppColors.gray400,
                   ),
@@ -121,9 +120,9 @@ class _TiketFormState extends State<TiketForm> {
                   label: 'Lokasi Keberangkatan',
                   hint: 'Pilih titik awal...',
                   controller: _keberangkatanCtrl,
-                  prefixIcon: const FaIcon(
-                    FontAwesomeIcons.locationDot,
-                    size: 14,
+                  prefixIcon: const Icon(
+                    Icons.location_on,
+                    size: 18,
                     color: AppColors.gray400,
                   ),
                   validator: (v) =>
@@ -133,9 +132,9 @@ class _TiketFormState extends State<TiketForm> {
                   label: 'Tujuan',
                   hint: 'Pilih titik tujuan...',
                   controller: _tujuanCtrl,
-                  prefixIcon: const FaIcon(
-                    FontAwesomeIcons.locationCrosshairs,
-                    size: 14,
+                  prefixIcon: const Icon(
+                    Icons.my_location,
+                    size: 18,
                     color: AppColors.gray400,
                   ),
                   validator: (v) =>

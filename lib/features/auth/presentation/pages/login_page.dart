@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../widgets/auth_form_field.dart';
 
@@ -123,8 +122,8 @@ class _LoginPageState extends State<LoginPage>
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const FaIcon(
-                                  FontAwesomeIcons.bus,
+                                const Icon(
+                                  Icons.directions_bus,
                                   color: AppColors.primary,
                                   size: 28,
                                 ),
@@ -331,7 +330,7 @@ class _LoginPageState extends State<LoginPage>
               Expanded(
                 child: _SocialButton(
                   label: 'Google',
-                  icon: FontAwesomeIcons.google,
+                  icon: Icons.language,
                   onTap: _showComingSoon,
                 ),
               ),
@@ -339,7 +338,7 @@ class _LoginPageState extends State<LoginPage>
               Expanded(
                 child: _SocialButton(
                   label: 'Facebook',
-                  icon: FontAwesomeIcons.facebook,
+                  icon: Icons.people,
                   onTap: _showComingSoon,
                 ),
               ),
@@ -460,8 +459,8 @@ class _LoginPageState extends State<LoginPage>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Row(
           children: const [
-            FaIcon(
-              FontAwesomeIcons.circleInfo,
+            Icon(
+              Icons.info_outline,
               color: AppColors.primaryDark,
               size: 20,
             ),
@@ -494,7 +493,7 @@ class _LoginPageState extends State<LoginPage>
 
 class _SocialButton extends StatelessWidget {
   final String label;
-  final FaIconData icon;
+  final IconData icon;
   final VoidCallback onTap;
 
   const _SocialButton({
@@ -507,7 +506,7 @@ class _SocialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton.icon(
       onPressed: onTap,
-      icon: FaIcon(icon, size: 15, color: AppColors.gray600),
+      icon: Icon(icon, size: 15, color: AppColors.gray600),
       label: Text(
         label,
         style: const TextStyle(

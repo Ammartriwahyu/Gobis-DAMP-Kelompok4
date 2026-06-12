@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../peta/presentation/widgets/peta_modal.dart';
 
@@ -39,7 +38,7 @@ class LayananSection extends StatelessWidget {
                       jenis: 'Suroboyo Bus',
                       target: 'Halte',
                       description: 'Layanan bus di dalam kota Surabaya. Cari dan temukan halte terdekat dari lokasi Anda saat ini.',
-                      icon: FontAwesomeIcons.bus,
+                      icon: Icons.directions_bus,
                       iconBg: AppColors.primaryLight,
                       iconColor: AppColors.primaryDark,
                     )),
@@ -48,7 +47,7 @@ class LayananSection extends StatelessWidget {
                       jenis: 'Bus Kota / Antar Kota',
                       target: 'Terminal',
                       description: 'Layanan bus untuk jangkauan yang lebih luas. Cari dan temukan terminal pemberangkatan terdekat.',
-                      icon: FontAwesomeIcons.busSimple,
+                      icon: Icons.commute,
                       iconBg: AppColors.sky100,
                       iconColor: AppColors.sky600,
                     )),
@@ -61,7 +60,7 @@ class LayananSection extends StatelessWidget {
                       jenis: 'Suroboyo Bus',
                       target: 'Halte',
                       description: 'Layanan bus di dalam kota Surabaya. Cari dan temukan halte terdekat dari lokasi Anda saat ini.',
-                      icon: FontAwesomeIcons.bus,
+                      icon: Icons.directions_bus,
                       iconBg: AppColors.primaryLight,
                       iconColor: AppColors.primaryDark,
                     ),
@@ -70,7 +69,7 @@ class LayananSection extends StatelessWidget {
                       jenis: 'Bus Kota / Antar Kota',
                       target: 'Terminal',
                       description: 'Layanan bus untuk jangkauan yang lebih luas. Cari dan temukan terminal pemberangkatan terdekat.',
-                      icon: FontAwesomeIcons.busSimple,
+                      icon: Icons.commute,
                       iconBg: AppColors.sky100,
                       iconColor: AppColors.sky600,
                     ),
@@ -88,7 +87,7 @@ class _LayananCard extends StatefulWidget {
   final String jenis;
   final String target;
   final String description;
-  final FaIconData icon;
+  final IconData icon;
   final Color iconBg;
   final Color iconColor;
 
@@ -147,7 +146,7 @@ class _LayananCardState extends State<_LayananCard> {
                     shape: BoxShape.circle,
                   ),
                   child: Center(
-                    child: FaIcon(widget.icon, color: widget.iconColor, size: 30),
+                    child: Icon(widget.icon, color: widget.iconColor, size: 30),
                   ),
                 ),
               ),

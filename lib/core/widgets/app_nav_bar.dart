@@ -19,6 +19,7 @@ class AppNavBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 3,
       shadowColor: Colors.black26,
       automaticallyImplyLeading: false,
+      actions: const [],
       titleSpacing: 0,
       title: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants/app_colors.dart';
 
 class AppFooter extends StatelessWidget {
@@ -70,21 +69,21 @@ class AppFooter extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _socialIcon(FontAwesomeIcons.instagram),
+        _socialIcon(Icons.photo_camera),
         const SizedBox(width: 16),
-        _socialIcon(FontAwesomeIcons.xTwitter),
+        _socialIcon(Icons.alternate_email),
         const SizedBox(width: 16),
-        _socialIcon(FontAwesomeIcons.envelope),
+        _socialIcon(Icons.email),
       ],
     );
   }
 
-  Widget _socialIcon(FaIconData icon) {
+  Widget _socialIcon(IconData icon) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () {},
-        child: FaIcon(icon, color: AppColors.gray400, size: 20),
+        child: Icon(icon, color: AppColors.gray400, size: 20),
       ),
     );
   }

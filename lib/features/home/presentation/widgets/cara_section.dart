@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/constants/app_colors.dart';
 
 class CaraSection extends StatelessWidget {
@@ -7,22 +6,22 @@ class CaraSection extends StatelessWidget {
 
   static const _steps = [
     (
-      icon: FontAwesomeIcons.locationDot,
+      icon: Icons.location_on,
       title: '1. Pilih Lokasi',
       desc: 'Tentukan lokasi awal dan tujuan perjalanan Anda.'
     ),
     (
-      icon: FontAwesomeIcons.route,
+      icon: Icons.alt_route,
       title: '2. Cek Rute & Jadwal',
       desc: 'Lihat rute yang tersedia dan pantau jadwal bus.'
     ),
     (
-      icon: FontAwesomeIcons.ticket,
+      icon: Icons.confirmation_number,
       title: '3. Pesan Tiket',
       desc: 'Lakukan pemesanan tiket secara digital dengan mudah.'
     ),
     (
-      icon: FontAwesomeIcons.bus,
+      icon: Icons.directions_bus,
       title: '4. Selamat Menikmati',
       desc: 'Naik bus dari halte/terminal dan nikmati perjalanan.'
     ),
@@ -81,7 +80,7 @@ class CaraSection extends StatelessWidget {
 }
 
 class _StepItem extends StatelessWidget {
-  final ({FaIconData icon, String title, String desc}) step;
+  final ({IconData icon, String title, String desc}) step;
 
   const _StepItem({required this.step});
 
@@ -91,7 +90,7 @@ class _StepItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
         children: [
-          FaIcon(step.icon, color: AppColors.primaryDark, size: 36),
+          Icon(step.icon, color: AppColors.primaryDark, size: 36),
           const SizedBox(height: 12),
           Text(
             step.title,

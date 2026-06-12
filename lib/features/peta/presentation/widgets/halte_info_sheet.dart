@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../data/lokasi_data.dart';
 
@@ -62,8 +61,8 @@ class HalteInfoSheet extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Center(
-                  child: FaIcon(
-                    isHalte ? FontAwesomeIcons.bus : FontAwesomeIcons.buildingColumns,
+                  child: Icon(
+                    isHalte ? Icons.directions_bus : Icons.account_balance,
                     color: isHalte ? AppColors.primaryDark : AppColors.sky600,
                     size: 20,
                   ),
@@ -101,12 +100,12 @@ class HalteInfoSheet extends StatelessWidget {
 
           // Route
           _infoRow(
-            icon: FontAwesomeIcons.route,
+            icon: Icons.alt_route,
             label: 'Rute',
             value: lokasi.rute,
           ),
           const SizedBox(height: 8),
-          _infoRowMaterial(
+          _infoRow(
             icon: Icons.access_time,
             label: 'Operasional',
             value: lokasi.keterangan,
@@ -136,34 +135,6 @@ class HalteInfoSheet extends StatelessWidget {
   }
 
   Widget _infoRow({
-    required FaIconData icon,
-    required String label,
-    required String value,
-  }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        FaIcon(icon, size: 13, color: AppColors.primaryDark),
-        const SizedBox(width: 10),
-        Text(
-          '$label: ',
-          style: const TextStyle(
-            fontWeight: FontWeight.w500,
-            color: AppColors.gray600,
-            fontSize: 13,
-          ),
-        ),
-        Expanded(
-          child: Text(
-            value,
-            style: const TextStyle(color: AppColors.secondary, fontSize: 13),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _infoRowMaterial({
     required IconData icon,
     required String label,
     required String value,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:latlong2/latlong.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/widgets/app_nav_bar.dart';
@@ -114,9 +113,9 @@ class _PetaPageState extends State<PetaPage> {
                     ),
                     suffixIcon: TextButton.icon(
                       onPressed: () {},
-                      icon: const FaIcon(
-                        FontAwesomeIcons.locationCrosshairs,
-                        size: 13,
+                      icon: const Icon(
+                        Icons.my_location,
+                        size: 16,
                         color: AppColors.primaryDark,
                       ),
                       label: const Text(
@@ -229,10 +228,10 @@ class _PetaPageState extends State<PetaPage> {
                                     ],
                                   ),
                                   child: Center(
-                                    child: FaIcon(
+                                    child: Icon(
                                       isHalte
-                                          ? FontAwesomeIcons.bus
-                                          : FontAwesomeIcons.buildingColumns,
+                                          ? Icons.directions_bus
+                                          : Icons.account_balance,
                                       color: AppColors.white,
                                       size: 16,
                                     ),

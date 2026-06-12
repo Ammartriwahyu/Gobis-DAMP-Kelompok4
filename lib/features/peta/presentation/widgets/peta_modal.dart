@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:latlong2/latlong.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../data/lokasi_data.dart';
@@ -112,8 +111,8 @@ class _PetaModalState extends State<PetaModal> {
                         hintText: 'Masukkan jalan atau landmark terdekat...',
                         suffixIcon: TextButton.icon(
                           onPressed: () {},
-                          icon: const FaIcon(
-                            FontAwesomeIcons.locationCrosshairs,
+                          icon: const Icon(
+                            Icons.my_location,
                             size: 13,
                             color: AppColors.primaryDark,
                           ),
@@ -236,11 +235,10 @@ class _PetaModalState extends State<PetaModal> {
                                             ],
                                           ),
                                           child: Center(
-                                            child: FaIcon(
+                                            child: Icon(
                                               isHalte
-                                                  ? FontAwesomeIcons.bus
-                                                  : FontAwesomeIcons
-                                                      .buildingColumns,
+                                                  ? Icons.directions_bus
+                                                  : Icons.account_balance,
                                               color: AppColors.white,
                                               size: 13,
                                             ),

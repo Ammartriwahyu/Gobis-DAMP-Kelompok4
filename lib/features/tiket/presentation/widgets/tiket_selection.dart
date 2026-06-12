@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/constants/app_colors.dart';
 
 class TiketSelection extends StatelessWidget {
@@ -29,7 +28,7 @@ class TiketSelection extends StatelessWidget {
                 child: _TiketCard(
                   jenis: 'Suroboyo Bus',
                   subtitle: 'Perjalanan dalam kota (QRIS / Poin Sampah)',
-                  icon: FontAwesomeIcons.ticket,
+                  icon: Icons.confirmation_number,
                   iconBg: AppColors.primaryLight,
                   iconColor: AppColors.primaryDark,
                   borderHoverColor: AppColors.primary,
@@ -41,7 +40,7 @@ class TiketSelection extends StatelessWidget {
                 child: _TiketCard(
                   jenis: 'Bus Kota / AKDP',
                   subtitle: 'Perjalanan antar kota / terminal',
-                  icon: FontAwesomeIcons.busSimple,
+                  icon: Icons.commute,
                   iconBg: AppColors.sky50,
                   iconColor: AppColors.sky600,
                   borderHoverColor: AppColors.sky400,
@@ -56,7 +55,7 @@ class TiketSelection extends StatelessWidget {
               _TiketCard(
                 jenis: 'Suroboyo Bus',
                 subtitle: 'Perjalanan dalam kota (QRIS / Poin Sampah)',
-                icon: FontAwesomeIcons.ticket,
+                icon: Icons.confirmation_number,
                 iconBg: AppColors.primaryLight,
                 iconColor: AppColors.primaryDark,
                 borderHoverColor: AppColors.primary,
@@ -66,7 +65,7 @@ class TiketSelection extends StatelessWidget {
               _TiketCard(
                 jenis: 'Bus Kota / AKDP',
                 subtitle: 'Perjalanan antar kota / terminal',
-                icon: FontAwesomeIcons.busSimple,
+                icon: Icons.commute,
                 iconBg: AppColors.sky50,
                 iconColor: AppColors.sky600,
                 borderHoverColor: AppColors.sky400,
@@ -82,7 +81,7 @@ class TiketSelection extends StatelessWidget {
 class _TiketCard extends StatefulWidget {
   final String jenis;
   final String subtitle;
-  final FaIconData icon;
+  final IconData icon;
   final Color iconBg;
   final Color iconColor;
   final Color borderHoverColor;
@@ -137,15 +136,11 @@ class _TiketCardState extends State<_TiketCard> {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: _hovering ? widget.iconBg : widget.iconBg,
+                  color: widget.iconBg,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Center(
-                  child: FaIcon(
-                    widget.icon,
-                    color: widget.iconColor,
-                    size: 24,
-                  ),
+                  child: Icon(widget.icon, color: widget.iconColor, size: 28),
                 ),
               ),
               const SizedBox(width: 16),

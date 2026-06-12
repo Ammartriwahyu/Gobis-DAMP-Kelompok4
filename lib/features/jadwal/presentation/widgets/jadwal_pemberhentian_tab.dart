@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/constants/app_colors.dart';
 
 class JadwalPemberhentianTab extends StatefulWidget {
@@ -73,7 +72,7 @@ class _JadwalPemberhentianTabState extends State<JadwalPemberhentianTab> {
                 const SizedBox(width: 12),
                 ElevatedButton.icon(
                   onPressed: () {},
-                  icon: const FaIcon(FontAwesomeIcons.magnifyingGlass, size: 14),
+                  icon: const Icon(Icons.search, size: 18),
                   label: const Text('Cari'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
